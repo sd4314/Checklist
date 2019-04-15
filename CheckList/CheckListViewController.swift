@@ -35,7 +35,7 @@ class CheckListViewController: UITableViewController {
             case 4:
                 label.text = "Take a jog"
             default:
-                label.text = "This shouldntt be needed"
+                label.text = "This shouldn't be needed"
             }
         }
         return cell
