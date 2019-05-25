@@ -38,6 +38,7 @@ class ToDoList {
 		item.text = randomTitle()
 //		item.isChecked = true
 		todos.append(item)
+		
 		return item
 	}
 
