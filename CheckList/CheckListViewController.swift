@@ -51,6 +51,12 @@ class CheckListViewController: UITableViewController {
 		
     }
 
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		todoList.todos.remove(at: indexPath.row)
+		tableView.deleteRows(at: [indexPath], with: .automatic)
+//		tableView.reloadData()
+	}
+
 	func updateCheckMark(cell : UITableViewCell, with item: CheckListItem) {
 		if item.isChecked {
 			cell.accessoryType = .checkmark
