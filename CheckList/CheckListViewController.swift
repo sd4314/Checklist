@@ -14,14 +14,22 @@ class CheckListViewController: UITableViewController {
 	var todoList: ToDoList
 //	var rowItem:[CheckListItem]
 
-    required init?(coder aDecoder: NSCoder) {
+	@IBAction func addItem(_ sender: Any) {
+		let newRowIndex = todoList.todos.count
+		_ = todoList.newToDo()
+		let indexPath = IndexPath(row: newRowIndex, section: 0)
+		tableView.insertRows(at: [indexPath], with: .automatic)
+	}
+
+	required init?(coder aDecoder: NSCoder) {
 
 		todoList = ToDoList();
         super.init(coder: aDecoder)
     }
+
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+		super.viewDidLoad()
+		navigationController?.navigationBar.prefersLargeTitles = true;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,10 +53,10 @@ class CheckListViewController: UITableViewController {
 
 	func updateCheckMark(cell : UITableViewCell, with item: CheckListItem) {
 		if item.isChecked {
-			cell.accessoryType = .none
+			cell.accessoryType = .checkmark
 		}
 		else {
-			cell.accessoryType = .checkmark
+			cell.accessoryType = .none
 		}
 		item.toggleCheckmark()
 	}
